@@ -221,6 +221,9 @@ st.sidebar.markdown("---")
 st.sidebar.markdown("**File naming:**")
 st.sidebar.code(f"{algorithm.lower()}_claude_seed{seed}.zip")
 
+st.sidebar.markdown("---")
+st.sidebar.markdown("[📖 Documentation](https://github.com/Semarxai/idt_app/blob/main/README.md)")
+
 # =============================================================================
 # MAIN PANEL - Tabs
 # =============================================================================
