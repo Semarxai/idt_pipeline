@@ -963,15 +963,24 @@ with tab_eval:
                 st.code(log_path)
                 st.caption(f"Contains {int(num_episodes) * 1000:,} rows ({int(num_episodes)} eps × 1000 steps)")
 
+            # Download log file
+                with open(log_path, 'r') as f:
+                    st.download_button(
+                        label="📥 Download Log CSV",
+                        data=f.read(),
+                        file_name=log_path.split('/')[-1],
+                        mime="text/csv"
+                    )
+            # Download test log
+                if os.path.exists("test_log.csv"):
+                    with open("test_log.csv", 'r') as f:
+                        st.download_button(
+                            label="📥 Download Test Log",
+                            data=f.read(),
+                            file_name="test_log.csv",
+                            mime="text/csv"
+                        )
 # =============================================================================
 # FOOTER
 # =============================================================================
 
-st.markdown("---")
-st.markdown("**Model files location:** Same folder as app.py")
-st.markdown("**Evaluation logs:**")
-st.markdown("- PPO: `logs_ppo_claude/`")
-st.markdown("- SAC: `logs_sac_claude/`")
-st.markdown("**Training logs:**")
-st.markdown("- PPO: `training_logs_ppo_claude/`")
-st.markdown("- SAC: `training_logs_sac_claude/`")
