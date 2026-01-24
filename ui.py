@@ -362,7 +362,7 @@ with tab_eval:
                 st.session_state.get("noise_type", "None")
             ),
             key="noise_type"
-        )
+            )
         
         with col2:
         noise_level = st.number_input(
@@ -373,7 +373,7 @@ with tab_eval:
             step=0.01,
             format="%.2f",
             help="0.05 = 5%, 0.10 = 10%, etc."
-        )
+            )
         st.session_state["noise_level"] = noise_level
 
         with col3:
@@ -384,7 +384,7 @@ with tab_eval:
                 value=0,
                 step=50,
                 help="Step in episode when noise begins (0 = from start)"
-         )
+             )
 
         # Quick noise presets
         st.caption("Quick presets:")
