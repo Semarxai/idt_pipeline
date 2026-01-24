@@ -50,10 +50,6 @@ A framework for monitoring reinforcement learning agent robustness using informa
 **Trajectory Log** (per run)
 Contains step-by-step data: episode, step, S, A, S', reward, P, intervention_regime
 
-### Log Files
-
-**Trajectory Log** (per run)
-
 The trajectory log is the core output of the IDT monitoring system. Every computation — normalization, binning, windowing, entropy calculation — exists to transform raw agent behavior into this structured record of state-action-next_state transitions.
 
 **What it captures:**
@@ -119,6 +115,14 @@ Tracks all runs with settings and results:
 | Intervention | mode, obs_smoothing, act_smoothing, act_clip |
 | P settings | num_bins, buffer_size, p_threshold_low, p_threshold_high |
 | Results | avg_reward, baseline_avg, perturbed_avg, P_mean, P_min, intervention_pct |
+
+### Analysis Notebook
+
+See `Analysis_Notebooks/RL_Analysis_FINAL_gitHub.ipynb` for detailed analysis examples including:
+- Entropy computations
+- P value analysis across conditions
+- Visualization of results
+- Data used in research paper
 
 
 ## How to Use
