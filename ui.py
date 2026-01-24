@@ -365,16 +365,16 @@ with tab_eval:
             )
         
         with col2:
-        noise_level = st.number_input(
-            "Noise level (std)",
-            min_value=0.0,
-            max_value=1.0,
-            value=st.session_state.get("noise_level", 0.0),
-            step=0.01,
-            format="%.2f",
-            help="0.05 = 5%, 0.10 = 10%, etc."
+            noise_level = st.number_input(
+                "Noise level (std)",
+                min_value=0.0,
+                max_value=1.0,
+                value=st.session_state.get("noise_level", 0.0),
+                step=0.01,
+                format="%.2f",
+                help="0.05 = 5%, 0.10 = 10%, etc."
             )
-        st.session_state["noise_level"] = noise_level
+            st.session_state["noise_level"] = noise_level
 
         with col3:
             perturb_start_step = st.number_input(
