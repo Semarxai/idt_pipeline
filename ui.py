@@ -364,7 +364,7 @@ with tab_eval:
             key="noise_type"
         )
         
-    with col2:
+        with col2:
         noise_level = st.number_input(
             "Noise level (std)",
             min_value=0.0,
