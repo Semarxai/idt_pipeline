@@ -356,21 +356,25 @@ with tab_eval:
 
         with col1:
             noise_type_ui = st.selectbox(
-                "Noise type",
-                ["None", "Observation", "Action"],
-                index=0,
-            )
-
-        with col2:
-            noise_level = st.number_input(
-                "Noise level (std)",
-                min_value=0.0,
-                max_value=1.0,
-                value=0.0,
-                step=0.01,
-                format="%.2f",
-                help="0.05 = 5%, 0.10 = 10%, etc."
-            )
+            "Noise type",
+            ["None", "Observation", "Action"],
+            index=["None", "Observation", "Action"].index(
+                st.session_state.get("noise_type", "None")
+            ),
+            key="noise_type"
+        )
+        
+    with col2:
+        noise_level = st.number_input(
+            "Noise level (std)",
+            min_value=0.0,
+            max_value=1.0,
+            value=st.session_state.get("noise_level", 0.0),
+            step=0.01,
+            format="%.2f",
+            help="0.05 = 5%, 0.10 = 10%, etc."
+        )
+        st.session_state["noise_level"] = noise_level
 
         with col3:
             perturb_start_step = st.number_input(
@@ -392,30 +396,35 @@ with tab_eval:
                 st.session_state["noise_level"] = 0.0
                 st.rerun()
 
-        with preset_cols[1]:
+       with preset_cols[1]:
             if st.button("Obs 5%"):
-                noise_type_ui = "Observation"
-                noise_level = 0.05
-
+                st.session_state["noise_type"] = "Observation"
+                st.session_state["noise_level"] = 0.05
+                st.rerun()
+        
         with preset_cols[2]:
             if st.button("Obs 10%"):
-                noise_type_ui = "Observation"
-                noise_level = 0.10
-
+                st.session_state["noise_type"] = "Observation"
+                st.session_state["noise_level"] = 0.10
+                st.rerun()
+        
         with preset_cols[3]:
             if st.button("Obs 20%"):
-                noise_type_ui = "Observation"
-                noise_level = 0.20
-
+                st.session_state["noise_type"] = "Observation"
+                st.session_state["noise_level"] = 0.20
+                st.rerun()
+        
         with preset_cols[4]:
             if st.button("Act 10%"):
-                noise_type_ui = "Action"
-                noise_level = 0.10
-
+                st.session_state["noise_type"] = "Action"
+                st.session_state["noise_level"] = 0.10
+                st.rerun()
+        
         with preset_cols[5]:
             if st.button("Act 20%"):
-                noise_type_ui = "Action"
-                noise_level = 0.20
+                st.session_state["noise_type"] = "Action"
+                st.session_state["noise_level"] = 0.20
+                st.rerun()
 
         # Map UI to parameter
         noise_type_map = {"None": "none", "Observation": "obs", "Action": "act"}
