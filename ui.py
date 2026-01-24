@@ -200,7 +200,7 @@ algorithm = st.sidebar.selectbox(
 
 seed = st.sidebar.selectbox(
     "Seed",
-    [0, 1, 2, 3, 5, 7, 9, 10, 11, 13, 14, 15],
+    [ 2, 4, 3, 5, 7],
     index=3,  # Default to seed 3
     help="Random seed for reproducibility."
 )
@@ -224,6 +224,9 @@ st.sidebar.code(f"{algorithm.lower()}_claude_seed{seed}.zip")
 st.sidebar.markdown("---")
 st.sidebar.markdown("[📖 Documentation](https://github.com/Semarxai/idt_app/blob/main/README.md)")
 
+st.sidebar.markdown("---")
+st.sidebar.caption("**Demo models:** PPO (2, 4) | SAC (3, 5, 7)")
+
 # =============================================================================
 # MAIN PANEL - Tabs
 # =============================================================================
@@ -235,7 +238,8 @@ tab_train, tab_eval = st.tabs(["🏋️ Training", "📊 Evaluation"])
 # =============================================================================
 
 with tab_train:
-    st.header(f"Train {algorithm} - Seed {seed}")
+    st.warning("⚠️ Training is disabled in the web app.")
+    st.info("Training requires local setup with GPU. Contact Semarx Research for details.")
 
     # Training settings
     col1, col2 = st.columns(2)
