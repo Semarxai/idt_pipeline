@@ -395,8 +395,8 @@ with tab_eval:
                 st.session_state["noise_type"] = "None"
                 st.session_state["noise_level"] = 0.0
                 st.rerun()
-
-       with preset_cols[1]:
+        
+        with preset_cols[1]:
             if st.button("Obs 5%"):
                 st.session_state["noise_type"] = "Observation"
                 st.session_state["noise_level"] = 0.05
