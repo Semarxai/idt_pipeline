@@ -45,6 +45,82 @@ A framework for monitoring reinforcement learning agent robustness using informa
 - Download trajectory logs (CSV)
 - Download test summary log (CSV)
 
+### Log Files
+
+**Trajectory Log** (per run)
+Contains step-by-step data: episode, step, S, A, S', reward, P, intervention_regime
+
+### Log Files
+
+**Trajectory Log** (per run)
+
+The trajectory log is the core output of the IDT monitoring system. Every computation — normalization, binning, windowing, entropy calculation — exists to transform raw agent behavior into this structured record of state-action-next_state transitions.
+
+**What it captures:**
+- Complete record of agent-environment interaction
+- Every decision the agent made (actions)
+- Every observation the agent received (states)
+- Every outcome that resulted (next states, rewards)
+- Real-time P values measuring behavioral coherence
+- Intervention status at each moment
+
+**Why it matters:**
+- **Reproducibility**: Full trace allows exact replay of what happened
+- **Diagnosis**: Pinpoint exactly when and where behavior degraded
+- **Analysis**: Compute any information-theoretic metric offline
+- **Comparison**: Compare runs across seeds, noise levels, interventions
+- **Validation**: Verify that P correctly detects perturbations
+- **Research**: Source data for publications and deeper analysis
+
+**Columns:**
+| Column | Description |
+|--------|-------------|
+| episode | Episode number (0 to N) |
+| t | Step within episode (0 to 1000) |
+| regime | Perturbation active (0=off, 1=on) |
+| intervention_regime | Intervention active (0=off, 1=on) |
+| P | Predictive coherence at this step (computed every 50 steps) |
+| s_0 to s_16 | 17-dimensional state observation |
+| a_0 to a_5 | 6-dimensional action |
+| reward | Step reward |
+| done | Episode termination flag |
+| s_next_0 to s_next_16 | Next state observation |
+
+**How to use:**
+- Open in Excel/Python for custom analysis
+- Feed into `analyze_trajectory.py` for full entropy breakdown
+- Plot state trajectories to visualize behavior
+- Compare P patterns across different conditions
+- Build flight envelopes from multiple runs
+
+**Test Log** (test_log.csv)
+
+Tracks all experiment runs with settings and summary results:
+
+| Category | Fields |
+|----------|--------|
+| Run info | timestamp, log_file |
+| Model | algorithm, seed, num_episodes |
+| Noise | noise_type, noise_level, perturb_start_episode |
+| Intervention | mode, obs_smoothing, act_smoothing, act_clip |
+| P settings | num_bins, buffer_size, p_threshold_low, p_threshold_high |
+| Results | avg_reward, baseline_avg, perturbed_avg, P_mean, P_min, intervention_pct |
+
+Use this to compare experiments without opening individual trajectory files.
+
+**Test Log** (test_log.csv)
+Tracks all runs with settings and results:
+
+| Category | Fields |
+|----------|--------|
+| Run info | timestamp, log_file |
+| Model | algorithm, seed, num_episodes |
+| Noise | noise_type, noise_level, perturb_start_episode |
+| Intervention | mode, obs_smoothing, act_smoothing, act_clip |
+| P settings | num_bins, buffer_size, p_threshold_low, p_threshold_high |
+| Results | avg_reward, baseline_avg, perturbed_avg, P_mean, P_min, intervention_pct |
+
+
 ## How to Use
 
 1. **Select Model**: Choose algorithm (SAC/PPO) and seed in sidebar
