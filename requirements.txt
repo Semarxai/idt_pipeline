@@ -1,0 +1,6 @@
+streamlit
+stable-baselines3
+gymnasium[mujoco]
+pandas
+numpy
+matplotlib
