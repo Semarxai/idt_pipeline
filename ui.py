@@ -218,14 +218,15 @@ else:
     st.sidebar.warning(f"⚠️ {algorithm} seed {seed} not trained yet")
 
 st.sidebar.markdown("---")
+st.sidebar.caption(":red[**Demo models:** PPO (2, 4) | SAC (3, 5, 7)]")
+
+st.sidebar.markdown("---")
 st.sidebar.markdown("**File naming:**")
 st.sidebar.code(f"{algorithm.lower()}_claude_seed{seed}.zip")
 
 st.sidebar.markdown("---")
 st.sidebar.markdown("[📖 Documentation](https://github.com/Semarxai/idt_app/blob/main/README.md)")
 
-st.sidebar.markdown("---")
-st.sidebar.caption("**Demo models:** PPO (2, 4) | SAC (3, 5, 7)")
 
 # =============================================================================
 # MAIN PANEL - Tabs
