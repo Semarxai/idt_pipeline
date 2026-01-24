@@ -384,7 +384,7 @@ with tab_eval:
                 value=0,
                 step=50,
                 help="Step in episode when noise begins (0 = from start)"
-            )
+         )
 
         # Quick noise presets
         st.caption("Quick presets:")
