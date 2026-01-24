@@ -386,46 +386,6 @@ with tab_eval:
                 help="Step in episode when noise begins (0 = from start)"
              )
 
-        # Quick noise presets
-        st.caption("Quick presets:")
-        preset_cols = st.columns(6)
-
-        with preset_cols[0]:
-            if st.button("No noise"):
-                st.session_state["noise_type"] = "None"
-                st.session_state["noise_level"] = 0.0
-                st.rerun()
-        
-        with preset_cols[1]:
-            if st.button("Obs 5%"):
-                st.session_state["noise_type"] = "Observation"
-                st.session_state["noise_level"] = 0.05
-                st.rerun()
-        
-        with preset_cols[2]:
-            if st.button("Obs 10%"):
-                st.session_state["noise_type"] = "Observation"
-                st.session_state["noise_level"] = 0.10
-                st.rerun()
-        
-        with preset_cols[3]:
-            if st.button("Obs 20%"):
-                st.session_state["noise_type"] = "Observation"
-                st.session_state["noise_level"] = 0.20
-                st.rerun()
-        
-        with preset_cols[4]:
-            if st.button("Act 10%"):
-                st.session_state["noise_type"] = "Action"
-                st.session_state["noise_level"] = 0.10
-                st.rerun()
-        
-        with preset_cols[5]:
-            if st.button("Act 20%"):
-                st.session_state["noise_type"] = "Action"
-                st.session_state["noise_level"] = 0.20
-                st.rerun()
-
         # Map UI to parameter
         noise_type_map = {"None": "none", "Observation": "obs", "Action": "act"}
         noise_type_param = noise_type_map[noise_type_ui]
